@@ -1,0 +1,237 @@
+{
+  "_about": "Allowlist for the context-me skill. Only vendor-published MCP servers, Anthropic first-party connectors, and Anthropic-published skills. `confidence` = how sure the maintainer is that the entry, URL, and install command are current. Re-verify quarterly; entries drift.",
+  "_last_reviewed": "2026-09-14",
+  "entries": [
+    {
+      "id": "github-mcp",
+      "name": "GitHub MCP Server",
+      "type": "mcp",
+      "vendor": "GitHub",
+      "what": "Lets Claude read and work with your repos, pull requests, issues, and CI runs directly instead of you pasting them in.",
+      "signals": ["github.com", "gh ", "pull request", "PR #", "issue #", "git log pasted", "actions run"],
+      "install": "claude mcp add --transport http github https://api.githubcopilot.com/mcp/",
+      "url": "https://github.com/github/github-mcp-server",
+      "confidence": "high"
+    },
+    {
+      "id": "atlassian-mcp",
+      "name": "Atlassian Rovo MCP Server (Jira + Confluence)",
+      "type": "mcp",
+      "vendor": "Atlassian",
+      "what": "Lets Claude open Jira tickets and Confluence pages by id or link, so you stop pasting ticket text or screenshots.",
+      "signals": ["atlassian.net", "jira", "ticket", "sprint", "story points", "acceptance criteria", "confluence", "screenshot with ticket id like ABC-123"],
+      "install": "claude mcp add --transport sse atlassian https://mcp.atlassian.com/v1/sse",
+      "url": "https://www.atlassian.com/platform/remote-mcp-server",
+      "confidence": "high"
+    },
+    {
+      "id": "mongodb-mcp",
+      "name": "MongoDB MCP Server",
+      "type": "mcp",
+      "vendor": "MongoDB",
+      "what": "Lets Claude query collections, inspect schemas and indexes, and explain slow queries against your cluster.",
+      "signals": ["mongosh", "mongodb+srv", "aggregate pipeline pasted", "collection", "atlas", "db.getCollection"],
+      "install": "claude mcp add mongodb -- npx -y mongodb-mcp-server --connectionString \"<uri>\"",
+      "url": "https://github.com/mongodb-js/mongodb-mcp-server",
+      "confidence": "high"
+    },
+    {
+      "id": "azure-mcp",
+      "name": "Azure MCP Server",
+      "type": "mcp",
+      "vendor": "Microsoft",
+      "what": "Lets Claude inspect and manage Azure resources (App Service, Storage, Key Vault, Monitor, Service Bus…) instead of you running az commands by hand.",
+      "signals": ["az ", "azure", "app service", "portal.azure.com", "blob", "key vault", "service bus", "cognitiveservices.azure.com"],
+      "install": "claude mcp add azure -- npx -y @azure/mcp@latest server start",
+      "url": "https://github.com/Azure/azure-mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "azure-devops-mcp",
+      "name": "Azure DevOps MCP Server",
+      "type": "mcp",
+      "vendor": "Microsoft",
+      "what": "Lets Claude read work items, pull requests, pipelines, and wikis in Azure DevOps directly.",
+      "signals": ["dev.azure.com", "work item", "You have been assigned to a work item", "azure devops", "ado ", "pipeline", "az repos", "az pipelines"],
+      "install": "claude mcp add azure-devops -- npx -y @azure-devops/mcp <your-org-name>",
+      "url": "https://github.com/microsoft/azure-devops-mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "microsoft-learn-mcp",
+      "name": "Microsoft Learn Docs MCP Server",
+      "type": "mcp",
+      "vendor": "Microsoft",
+      "what": "Gives Claude live, accurate Microsoft/Azure documentation instead of guessing from memory.",
+      "signals": ["learn.microsoft.com", "techcommunity.microsoft.com", "azure docs", "how do I in azure"],
+      "install": "claude mcp add --transport http microsoft-learn https://learn.microsoft.com/api/mcp",
+      "url": "https://learn.microsoft.com/training/support/mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "Playwright MCP Server",
+      "type": "mcp",
+      "vendor": "Microsoft",
+      "what": "Lets Claude open a browser, click through your app, and read pages — for testing UIs without you screenshotting them.",
+      "signals": ["screenshot of a web page", "localhost:3000", "click", "the UI shows", "frontend not loading", "test the page"],
+      "install": "claude mcp add playwright -- npx @playwright/mcp@latest",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "sentry-mcp",
+      "name": "Sentry MCP Server",
+      "type": "mcp",
+      "vendor": "Sentry",
+      "what": "Lets Claude pull error events and stack traces from Sentry instead of you pasting them.",
+      "signals": ["sentry.io", "sentry", "stack trace pasted", "exception in prod"],
+      "install": "claude mcp add --transport http sentry https://mcp.sentry.dev/mcp",
+      "url": "https://docs.sentry.io/product/sentry-mcp/",
+      "confidence": "high"
+    },
+    {
+      "id": "linear-mcp",
+      "name": "Linear MCP Server",
+      "type": "mcp",
+      "vendor": "Linear",
+      "what": "Lets Claude read and update Linear issues directly.",
+      "signals": ["linear.app", "linear issue"],
+      "install": "claude mcp add --transport sse linear https://mcp.linear.app/sse",
+      "url": "https://linear.app/docs/mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "notion-mcp",
+      "name": "Notion MCP Server",
+      "type": "mcp",
+      "vendor": "Notion",
+      "what": "Lets Claude read and write your Notion pages and databases.",
+      "signals": ["notion.so", "notion page", "pasted notion doc"],
+      "install": "claude mcp add --transport http notion https://mcp.notion.com/mcp",
+      "url": "https://developers.notion.com/docs/mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "stripe-mcp",
+      "name": "Stripe MCP Server",
+      "type": "mcp",
+      "vendor": "Stripe",
+      "what": "Lets Claude look up customers, payments, and subscriptions and read Stripe docs.",
+      "signals": ["stripe", "payment intent", "subscription webhook"],
+      "install": "claude mcp add --transport http stripe https://mcp.stripe.com",
+      "url": "https://docs.stripe.com/mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "supabase-mcp",
+      "name": "Supabase MCP Server",
+      "type": "mcp",
+      "vendor": "Supabase",
+      "what": "Lets Claude inspect tables, run SQL, and manage your Supabase project.",
+      "signals": ["supabase", "supabase.co"],
+      "install": "claude mcp add supabase -- npx -y @supabase/mcp-server-supabase@latest --access-token <token>",
+      "url": "https://supabase.com/docs/guides/getting-started/mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "cloudflare-mcp",
+      "name": "Cloudflare MCP Servers",
+      "type": "mcp",
+      "vendor": "Cloudflare",
+      "what": "Lets Claude work with Workers, KV, R2, DNS, and Cloudflare docs.",
+      "signals": ["cloudflare", "workers.dev", "wrangler"],
+      "install": "See vendor page — one remote server per product (docs, workers bindings, observability…)",
+      "url": "https://github.com/cloudflare/mcp-server-cloudflare",
+      "confidence": "high"
+    },
+    {
+      "id": "aws-mcp",
+      "name": "AWS MCP Servers",
+      "type": "mcp",
+      "vendor": "AWS (awslabs)",
+      "what": "A family of official servers for AWS docs, CDK, cost, Lambda, and more.",
+      "signals": ["aws ", "s3://", "lambda", "cloudformation", "boto3", "amazonaws.com"],
+      "install": "See vendor page — pick the server for the AWS service you use (e.g. uvx awslabs.aws-documentation-mcp-server@latest)",
+      "url": "https://github.com/awslabs/mcp",
+      "confidence": "high"
+    },
+    {
+      "id": "figma-mcp",
+      "name": "Figma Dev Mode MCP Server",
+      "type": "mcp",
+      "vendor": "Figma",
+      "what": "Lets Claude read your Figma designs (layout, tokens, components) instead of you screenshotting them.",
+      "signals": ["figma.com", "figma", "design screenshot", "match the design"],
+      "install": "Enable in Figma desktop app (Dev Mode → MCP server), then: claude mcp add --transport sse figma http://127.0.0.1:3845/sse",
+      "url": "https://help.figma.com/hc/en-us/articles/32132100833559",
+      "confidence": "medium"
+    },
+    {
+      "id": "context7-mcp",
+      "name": "Context7 (library documentation)",
+      "type": "mcp",
+      "vendor": "Upstash",
+      "what": "Gives Claude current, version-specific docs for the libraries you use, cutting hallucinated APIs.",
+      "signals": ["python.langchain.com", "docs pasted from a library site", "deprecated api", "which version supports"],
+      "install": "claude mcp add --transport http context7 https://mcp.context7.com/mcp",
+      "url": "https://github.com/upstash/context7",
+      "confidence": "high"
+    },
+    {
+      "id": "google-workspace-connectors",
+      "name": "Gmail / Google Calendar / Google Drive connectors",
+      "type": "connector",
+      "vendor": "Anthropic (first-party connectors, claude.ai)",
+      "what": "Lets Claude read your mail, calendar, and Drive files when you ask — instead of you copying emails or documents in.",
+      "signals": ["forwarded email pasted", "meeting", "calendar", "docs.google.com", "drive.google.com", "gmail"],
+      "install": "claude.ai → Settings → Connectors → enable; then usable from Claude Code sessions signed into the same account",
+      "url": "https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp",
+      "confidence": "medium"
+    },
+    {
+      "id": "anthropic-document-skills",
+      "name": "Anthropic document skills (docx, xlsx, pptx, pdf)",
+      "type": "skill",
+      "vendor": "Anthropic",
+      "what": "Ready-made skills for creating and editing Word, Excel, PowerPoint, and PDF files properly — instead of Claude improvising with raw libraries.",
+      "signals": [".xlsx", ".docx", ".pptx", ".pdf", "spreadsheet", "slide deck", "report as word", "fill the pdf"],
+      "install": "/plugin marketplace add anthropics/skills → install document-skills (or copy skills/ from the repo into ~/.claude/skills/)",
+      "url": "https://github.com/anthropics/skills",
+      "confidence": "high"
+    },
+    {
+      "id": "anthropic-webapp-testing-skill",
+      "name": "webapp-testing skill",
+      "type": "skill",
+      "vendor": "Anthropic",
+      "what": "A skill that drives a local web app with Playwright to verify UI behavior and capture logs/screenshots.",
+      "signals": ["localhost", "frontend", "is the page working", "ui screenshot pasted", "console error"],
+      "install": "From https://github.com/anthropics/skills — copy skills/webapp-testing into ~/.claude/skills/",
+      "url": "https://github.com/anthropics/skills",
+      "confidence": "high"
+    },
+    {
+      "id": "anthropic-mcp-builder-skill",
+      "name": "mcp-builder skill",
+      "type": "skill",
+      "vendor": "Anthropic",
+      "what": "Guides building your own MCP server correctly when no official one exists for a tool you use.",
+      "signals": ["internal api pasted repeatedly", "our own tool", "no mcp for", "build an mcp"],
+      "install": "From https://github.com/anthropics/skills — copy skills/mcp-builder into ~/.claude/skills/",
+      "url": "https://github.com/anthropics/skills",
+      "confidence": "high"
+    },
+    {
+      "id": "anthropic-skill-creator-skill",
+      "name": "skill-creator skill",
+      "type": "skill",
+      "vendor": "Anthropic",
+      "what": "Helps you turn a workflow you repeat in chat into a reusable skill, and test it.",
+      "signals": ["same instructions typed across many sessions", "repeated multi-step prompt", "every time do X then Y"],
+      "install": "From https://github.com/anthropics/skills — copy skills/skill-creator into ~/.claude/skills/",
+      "url": "https://github.com/anthropics/skills",
+      "confidence": "high"
+    }
+  ]
+}
