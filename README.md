@@ -1,4 +1,8 @@
-# context-me
+# ToolFit
+
+*Find the tools your workflow is missing.*
+
+> **Previously context-me:** the repository is now `tool-fit`. The skill command is still `/context-me`, and the installation paths below retain their current names.
 
 You've been pasting Jira screenshots into Claude Code for weeks. `context-me` reads your recent sessions and tells you: *"in 7 of 20 sessions you did that by hand — here's the official Atlassian MCP server and the one command to add it."*
 
